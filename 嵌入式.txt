@@ -1,0 +1,7 @@
+嵌入式操作系统（Embedded Operating System, EOS）;
+中断服务程序（ISR）;
+硬件抽象层（Hardware Abstract Layer, HAL）和板级支持包（Board Support Package, BSP）-底层软件
+应用程序接口（API）；
+可编程片上系统（SoPC）；
+引导加载程序（Boot Loader）;s
+

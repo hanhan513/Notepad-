@@ -1,0 +1,37 @@
+makefile
+	语法：			注释		#	
+				变量 		xx=xxx  $xx 
+				自动变量	$@ < * ....
+				依赖关系
+				命令		
+gdb				run
+				print x
+				list(查看附近代码)
+				bt(查看堆栈)
+				break 设置断点
+				delete删除断点
+				step  单步执行
+				quit  退出
+				
+	
+
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				

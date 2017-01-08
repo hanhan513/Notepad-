@@ -1,0 +1,50 @@
+/*
+	some vocabulary
+*/
+	
+	decimal 	十进制										
+	stack		堆栈										overflow	溢出
+	inline		嵌入，内联
+	construer	构造函数
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

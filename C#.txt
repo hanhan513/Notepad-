@@ -1,0 +1,55 @@
+vs快捷键  prop  	tab
+		  ctor?
+
+
+
+语法：				decimal(十进制型)
+					类型转换			Parse    ToString
+					参数类型			ref(引用参数) out(输出参数) params(参数数组)
+					
+						
+多态：				virtual  override new  sealed
+					abstract   ....//区别在于virtual能够实例化；
+					Interface  
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						

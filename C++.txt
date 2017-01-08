@@ -1,0 +1,365 @@
+1，cin.get()和getline()输入超过指定字符数？    string    (cin.get()).get();
+2, 使用指针 必须先new吗？不new能用吗？     		p=&a,指向的内存已经定义过了，所以不需要new，但是你要是指向一个没有定义的内存，就需要new了~~
+												比如链表，当你p->next的时候，因为下一个内存还没有创建，所以必须先new，或者malloc申请内存，才可以使用~~ 
+3，stringstream:
+						
+day01				配置路径																			ctime: time(NULL)																																			
+					编辑	xxx.cc																		atof(string)//转换为相应数字；					
+					编译	gcc -c xxx.cc																atoi(string)																				
+					链接	gcc xxx.cc	-o  xx(命名)													swap(int a, int b);	int& a ,&b//避开指针，	
+					运行																				memset(a,0,size)用一个字符填空间				
+
+day02				定义初始值，不存 垃圾变量；																
+					友好界面；											
+					字面量：
+					见名知意																				
+												
+day03				运算符：												
+					循环：							
+					ctime: time(NULL)
+					函数：
+																																		
+day04				重载：	f(int x);	f(int x, int y)																				
+					阶乘
+					段错误(stack over_flow)：访问了不能访问的内存！																
+					
+day05				:数组，结构；					
+					
+day06				结构体，计算两日期相差；	
+					指针；野指针，空指针；
+					指向；
+					指针在使用前必须初始化，指针的类型决定了指针所参与的运算；指针只能进行加减法运算；
+					结构类型也是指针，(*p).y    =   p->y;
+					new delete
+					
+day07				段错误：使用时p已经改变了；													使用指针和引用注意事项：保证那个变量有“后续”（函数返回的变量还存在）；
+					统计字符次数:采用ASC码；																			初始化；保证指向有效；
+					指向常量的指针；
+					 命令行参数：int main(int argc,char* argv[]) //带的参数的个数，和参数；
+					 引用&  //提倡引用；
+					常量引用； //尽量用引用传递参数，尽量用const
+					函数指针，//指向函数的指针变量，即本质是一个指针变量。 函数名-》(*指针)的形式/类型一致
+					void (*fp)(int a[],int n)=NULL;
+					函数名就是函数地址；
+					
+day08				面向对象(OOP)
+					时钟；				// "\r"回到开头	//输出-》缓冲区-》显示屏; flush,刷新
+					结构里面函数，str::fun()   this
+					class 类
+					构造函数；
+					重载： //在构造函数：n(0)，x(){} //只能在构造函数
+					形参初始化，可以是构造函数简单；
+					析构函数：不能重载
+					
+day09				继承：	单继承	//继承方式//	多重继承				//	public		private  protected				 		
+							多继承 	//
+							虚继承	//virtual  //标识 ，避免冲突
+					多态：	虚函数
+							类别识别
+							纯虚函数
+							抽象类
+					异常：
+					const 定义，const函数，优先调普通函数，fun()const{}
+					
+day10				多态：virtual（通过指针访问某个函数，根据对象真实类型访问相应类中的函数）
+					虚函数占内存，虚函数表；
+					多态：统一操作接口，虚函数，通过指针或者引用实现
+					virtual void fun()=0  //纯虚函数(有纯虚函数的类叫抽象类，不允许直接创建对象，只能指向或引用子类对象) 
+					静态类型转换：static_cast<类型>(数据) (静态类型转换) //数值类型之间，有类型指针与void*
+					const_cast<类型>(数据) //把常量转为变量
+					auto(自动变量) volatile(不稳定变量) register(寄存器变量，小)
+					reinterpert_cast<类型*>(p) //重新解释内存-最危险的转换。不同类型指针之间转换。
+					动态类型转换：dynamic_cast<子类*>(父类地址)//要求父类至少一个虚函数
+					虚析构：根据对象真实类型调用
+					基函数：尽量用虚函数，甚至纯虚函数
+					友元：直接访问某个类私有成员的桥梁 //在类的内部用friend声明；						凡是传递参数几乎都会加 引用！！	const//不需要改， const a& xx	
+					静态成员；所有对象共有一份数据，都要声明为静态成员； 访问：类名：：静态成员
+					
+day11				A(const A& O):date(O.date){};
+					拷贝构造函数，浅拷贝，深拷贝；
+					//friend//成员函数方便点 A operator+(const A& a1,const A& a2);//运算符函数。
+					<< //不能成员函数，ostream & operator<<
+
+day12				I/O: cerr, clog,输出不缓冲，无重定向；//用法同cout
+					重定向：
+					ifstream,ostream;
+					当读取出错了可以当成假输出，cout<< fout << endl； 0  ：
+					非格式化>>：get()//返还ASCII码,get(char&)/
+					getline(数组，长度);getline (fin ,str,':');//读到：停止
+					!!一旦处于错误输入流，就不再输入，cin.clear();//恢复到正常状态
+					ignore,cin.peek();不会读走，还在输入流中。可以用来判断。
+					putback();把读走的数据送回去
+					fin.read(addr,n);fout.write(addr,n);fin.eof();//判断是否读到文件末尾
+
+day13				cout.width();cout.fill('*')//空位置填充，宽度只对一个，fill一直有效；
+					输出格式控制符：控制格式。重载<<
+					cout.precinson();//控制精度
+					setf(ios::hex|ios::left);//添加控制标志，unsetf()//清除
+					格式控制符，setw,setfill,setpercinson---#include<iomanip>
+					string //实际上是存的地址 fout.write((char*)&str.c_str(),str.size);
+					seekg();//跳跃读 seekp();跳跃写
+					内部类（A::B objb;）把类型隐藏在里面，避免类名冲突：通过提供统一内部类明，统一各个类的方法，全局类
+					
+					异常：不常见，可预料，可处理
+					try{ throw（抛出就不会回来）} catch{}	严格类型匹配 子类在前， catch(...)所有类型都能匹配								exception类; what()
+					异常处理之前任何都不会执行，处理之后从catch开始
+					没被捕获的异常会被传递到调用他的地方//如果一直没有捕获，调默认函数，可能导致程序异常终止
+					
+					！！！链表，结构体，构造函数，创建，清空，增删，修改，查找，遍历
+					
+day14				双向链表：
+					栈：//（继承）组合，链表中可以用的//用数组实现
+					队列：
+					二叉树（左支 数据 小于父节点，右支 大于或等于），排序
+					算法：有穷，确切，输入，输出，可行
+					排序：
+					
+day15				排序：
+						冒泡排序：每次比相邻两个，不合适就交换
+						插入排序：1将头两个元素排序，                     1找合适的插入位置
+									2接下来将每一个元素排到争取的位置		2把从那个位置开始的元素右移
+									3知道所有的元素排完						3把新元素放到插入位置
+						快速排序：选出分界值，小的一边，大的一边；
+					模板：自定义，标准模板库，泛型编程；！！！声明和定义不要分开；
+					优先选用非模板，
+					
+							STL ：  类模板(容器)。   函数模板（通用算法）。				class iterator{
+										↓				↑										T* xxx
+										内部类：iterator（迭代器//对指针的封装）				public:
+																								iterator()
+					模拟指针，重载操作符，														}；
+					智能指针（使用迭代器模拟）
+					序列式容器：！vector（动态数组），deque(双端队列)，！list(双向链表)；
+					关联式容器：map（映射），multimap(多映射)，set(数据集)，multiset(多数据集)；
+					区间：两个迭代器建造的范围
+					begin(),end()//end指向不属于这个容器
+					
+day16				复习:排序方法，										//垃圾数据					
+																		//野指针					
+					容器适配器：stack																			
+								queue																	
+								priority-queue(优先队列)
+								
+					构造：constructor(int n,T xx)																				
+					调整：resize(int n ,T xx);																						
+					赋值：assign(n,xx)//相同数据  assign(区间)
+					插入：insert(pos,n,xxx);insert(pos,区间);
+					尾插：push_back();
+					尾删：pop_back();
+					首尾：front();back();
+					reserve(int n);
+					vector（类似动态数组）at();(检查是否越界)，list（对频繁的插入删除优化）。经常使用
+				
+					关联式容器：二叉查找树，
+					
+					count(val)//统计
+					find(val)
+					lower_bound()//寻找某一个值在容器中的第一个位置
+					upper_bound()//最后一个的后一个位置，，，，，，这两个之间的距离					
+					?pair<die,die>		//返回lower upper	
+					map重复的插入被忽略，multimap	
+					红黑树：
+
+					STL:标准算法
+					serach:for_each();find();find_first_of();find_end();//参数->区间
+					sort:sort();reverse();
+					Copy:copy();copybackward();
+					Modify:replace();merge();remove();
+					...
+					
+												->流程控制 （for  if while）
+								基本语法  		->函数 	/递归（停止条件）（作用域，形参）//每次调用都是新的
+												->引用(直接使用旧变量)
+												->指针(只能保存地址)
+												
+					C++ ->		OO 				->定义类(构造函数，拷贝构造函数)
+
+												->运算符函数（成员，友元）>>  (xxx,T& o)
+												->静态（属于整个类，不属于某个对象）在外部定义
+								扩展			->IO(文件对象的创建).close()
+												->异常：
+												->模板：
+
+
+
+								链表（段错误//递归无结束，指针）
+					数据结构	栈		LIFO
+								队列	FIFO
+								二叉查找树	Node*
+					
+					算法		各种排序法
+					
+					文件系统：多进程：网络：
+
+day17				uc(unix c):													编程习惯：传递指针数组，没有说明元素个数，用NULL放在末尾。
+					获得环境变量的值，														返回指针的函数，正常非空，错NULL;
+					进程状态																	返回整数，正常非负，错负数，-1；
+					用户信息： getuid geteuid getlogin
+					各种API：														自己准备字符数组存字符串的时候，传长度//防止数组越界访问
+					文件系统：
+					在程序中使用各种命令的函数:													文件操作：fcntl.h 	unistd.h
+					opendir readdir closedir//一条一条											目录操作：sys/stat.h dirent.h
+					stat//查看文件参数		struct stat x;												sys/types.h
+					在程序中创建和删除函数：mkdir("",权限) rmdir("")
+					文件权限：access 打开文件和创建：open(xx,xx); 删除：ulink（""）,remove("")
+					shell 产生3种文件描述符（0，1，2）：cin ,cout, cerr
+					读写：read/write/lseek
+					
+day18				gethostname(地址，长度):
+					获取系统时间：localtime:
+					strftime():
+					
+					多进程：
+					atexit(函数名); 无参//退出处理函数：
+					exit(int)			//相当于return  但是不会调用析构函数 不是正常的退出
+					system(); 系统命令 ps -al;  pid ppid(父)  
+					
+				！	fork()(uc 标志性函数)//真正同时的多进程 返回：子=0 ，父>0, 错<0;
+					子进程，父进程：fork():复制一份相同的程序     //unix 子进程的资源必须由父进程回收
+					wait()//回收子进程结束的资源，防止僵死进程过多卡顿 //wait(&s) 取得返回值  WIFEXITED(s)
+					//返回值给父进程用
+					execvp("程序名"，argv)//execvp()会从PATH 环境变量所指的目录中查找符合参数file 的文件名，找到后便执行该文件，然后将第二个参数argv传给该欲执行的文件
+					exelp("程序名"，"程序名"，"xx")//程序名总是重复出现
+					
+day19				阻塞：	sleep  pause() //暂停
+				！	精灵进程(daemon）：//在后台运行的，守护进程//有一套规范的写法  //fork();setsid();umask(0077);close(x);
+					信号机制：
+					FIFO管道(单向)： 读写双方同时，可以使用进程间通信（双方都关闭后，数据全部消失）
+						复制fifo文件 相当于读 无法 //不用删掉
+						mkfifo()
+						
+					消息队列： 在内存中传递数据  //发出去可以收
+					ipcs //查看
+					ipcrm -q id //删除
+					msg创建(查找)：get 发： snd 收：rw 删除：ctl
+					通道：可以选择不同通道 结构i'k'i'k'k'ko
+					man -S7 signal//查看有什么信号
+					SIG_ERR//登记失败
+					//信号捕获与忽略//信号在某些系统中会取消等待（阻塞）//会出错
+					signal(SIGINT，func);
+					kill //发送信号   kill -信号名 进程ID
+					kill(PId,信号)
+					
+					man的使用
+					
+					makefile	//写依赖关系，依赖关系下一行 编译命令一定是tab开头
+							//示例
+					  1 a.out : daemon.o make_daemon.o work.o
+					  2 <tab>g++ daemon.o make_daemon.o work.o
+					  3 daemon.o:daemon.cc daemon.h
+					  4     g++ -c daemon.cc
+					  5 make_daemon.o: make_daemon.cc daemon.h
+					  6     g++ -c make_daemon.cc
+					  7 work.o: work.cc
+					  8     g++ -c work.cc
+				
+						//只会重新编译改过的，在许多文件的时候可以节省时间
+					动态链接库（shared object）
+					
+					文件格式符	标准输入0 标准出1 标准错误2   //read/write();
+					禁止子进程使用终端： close(0) ...
+
+day20				共享对象：					
+					动态链接库（shared object）： 随时调用的，windows(xxx.dll);unix (xxx.so)
+					G++ -l 库名 g++ -L 库目录  //链接库
+					编写：不能又main
+					编译为库：g++ add.cc -shared -o libzh.so
+					使用库：包含头文件，链接：g++ testadd.cc -l（zh） -Llib
+					运行：得告诉他在哪里：在环境变量中加入 LD_LIBRARY_PATH=:lib
+					自己用可以直接编译
+					
+					调试(GDB)： help(h) 帮助
+					g++ -g(产生调试信息) gdb.cc 
+					list 1  //列出以某一行为中心的10行代码
+					断点 break 6    查看 info break  删除 delate 断点编号  
+					run //运行   print 变量 p=xx//可以修改变量的值
+					next //继续运行直到下一个断点   continue   step //会进入函数中  finish //运行到函数结束  until 行号
+					
+				！	网络OSI(七层模型)：开放系统互联				↑           
+					物理层：电缆，接口							↑一位一位	↓解包		中继器
+					数据链路层(mac)：驱动程序					↑打包					网桥，交换机
+					网络层：ip。网关。路由，不同网段			↑打包					路由器。交换机
+					传输层：端口。TCP/UDP						↑决定协议，在封装		
+					会话层：虚的，功能简单						↑包装
+					表示层:	统一数据格式						↑再次包装
+					应用层：决定发什么数据 http ftp				↑包装					网关
+					
+					TCP(transmission control protocol)/IP
+					建立链接：3次握手			http://blog.csdn.net/whuslei/article/details/6667471/
+					关闭链接：4次关闭
+					物理层：			↓
+					网络接口层：	  协议栈			↑ 硬件 驱动
+					互联网层：
+					传输层：		
+					应用层：			↑
+					
+				！	socket：套接地址(端口，IP地址)
+					sockaddr(套接地址类型)sockaddr_in(6)//总得转换为(sockaddr*)  C语言没有继承
+					表示层：必须转换成统一格式   
+					转换为网络格式	s=htons(s);		主机格式	s=ntohs (s);
+									l=htonl(l);					l=ntohl (l);
+
+day21				socket:	 				http://www.cnblogs.com/xudong-bupt/archive/2013/12/29/3483059.html
+					
+					int ss =socket(AF_INET(ipv4 or v6),SOCK_STREAM(tcp or ),0(必须0));
+
+					int r =bind (ss,(sockaddr*)&si,len);//绑定一个套接地址
+
+					r = listen(ss,20);//监听，接受请求
+
+					int cs=accept(ss,(sockaddr*)&c,&len);//取得对方的套接地址
+					
+					UDP：高效，但是不安全。适合大量
+					
+				！	socket                  socket
+											bind	
+											recvfrom
+											send to 
+											close
+											
+											
+					UDP
+					
+					复习：  多进程 ：		fork();
+									
+											exec();
+											
+							消息队列：		msgget
+											msgsev
+											msgrcv
+											msgctl
+										
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+
+						
+												

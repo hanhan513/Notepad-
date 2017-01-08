@@ -1,0 +1,281 @@
+基础挃令的操作：			date, cal, bc
+重要的几个热键：			[Tab], [ctrl]-c, [ctrl]-d
+简单文书编辑器：			nano
+正确的关机方法: 			sync, shutdown, reboot, halt, poweroff, init
+目弽癿相关操作：			cd, pwd, mkdir, rmdir
+档案目检规： 				ls
+复制、删除不移：			cp, rm, mv
+直接检规档案内容： 			cat, tac, nl
+可翻页检规： 				more, less
+资料撷取： 					head, tail
+非纯文本档： 				od
+修改档案时间不建置新档： 	touch
+档案预讴权限：				umask
+档案隐藏属性： 				chattr, lsattr
+档案特殊权限：				SUID, SGID, SBIT, 权限设定
+观察文件类型：				file
+脚本文件名癿搜寻：			which
+档案档名癿搜寻：			whereis, locate, find
+文本过滤： 					grep 
+文件压缩和归档：			tar(tvf,cvf),  (-z tgz)  (-j bz2), zip , unzip， 7z,  7za
+库文件归档： 				ar(目标代码文件到静态库文件)
+设备挂载卸载：				mount,ntfs
+							光盘		(mount -t iso 9660 /dev/cdrom/mnt(访问目录，可多个))
+							光盘iso文件	(mount -o loop(回环，虚拟光驱)-t mycd.iso/media)
+							U盘FAT32	(mount -t vfat /dev/sdb1/mnt)
+							NTFS		(mount.ntfs /dev/sdb1/mnt)
+							卸载		umount
+软件包升级：				下载		apt-get download vim
+							下载安装	apt-get install 
+							离线安装	dpkg -i -r
+进程查看：					ps -aux
+							pstree -p
+							动态查看 	top -p PID
+进程中止：					kill -l (查看所支持的信号)
+							sudo kill -9 $$(当前)
+							killall -9 name
+系统管理：					清屏 		clear
+							重启 		reboot
+							关机 		halt shutdown
+							信息查看	cat /proc/meminfo
+										cat /proc/cpuinfo
+							操作系统	uname -a
+							主机名		hostname
+计划任务：					cron服务	crontab(时间格式 man 5 crontab)
+内存状态查看：				free -s 5	实时刷新
+							df -h		磁盘	
+							du -sh		文件占用
+磁盘分区:					查看		sudo fdisk -l
+							设置		谨慎
+网络连接及地址：			ping
+							地址,设置	ifconfig
+							域名解析()	nslookup
+							路由		route
+							统计信息	netstat
+用户管理					添加与删除	useradd(-m XX)	userdel(-r XX)
+							查看当前	whoami  who
+							用户ID		id
+							切换		su  		推荐方法到root(sudo -i)
+							临时权限	sudo
+							账户锁定	usermod (-L -U)
+							账号文件 	/etc/shadow /etc/passwd
+用户组管理					添加		groupadd 缺省分配最小gid给新用户组
+							删除		groupdel
+							查看		groups
+							成员更改	gpasswd(-a(加) -d(删除))
+							有效群组	newgrp
+							配置文件	/etc/group
+文件权限					权限设置	chmod(字符和数字方式)	
+							缺省权限	umask
+							属主		chown
+							属组		chgrp
+网络服务					ftp							
+							安装		apt-get install vsftpd
+							启动		service vsftpd start
+							停止		service vsftpd stop
+							重启		service vsftpd restart
+							配置文件	/etc/vsftpd.conf
+ssh(远程安全登录)			ssh
+							安装  		apt-get install openssh-server
+							启动
+							停止
+							重启
+							配置文件	/etc/ssh/sshd_conf
+shell						shell
+							命令补全 	tab键
+							命令历史	history			！
+							命令别名	alias
+							通配符		*	代表任意多个
+										？	任意一个，必须存在一个
+										[0-9]范围中一个
+							命令后台	命令末端使用”&“符号
+										jobs(查看后台)
+										bg(将当前切换到后台)
+										fg(将最近后台切换到前台)			fg %3(换回3号)
+							//!!!!!!				
+shell变量					环境变量
+							输入输出流
+							env
+							管道 |  grep	"xxx"
+							输入输出重定向  >覆盖   >>新增   <   <<(here document)
+							位置变量	$1-9		shift 切取
+							
+							cp功能		cat <ff >hh
+shell脚本					脚本(以解释方式执行方式的程序语句集合体；批量的顺序处理；非交互的命令使用方式提升效率；合法编写，正确执行)							
+							控制结构；顺序，分支，循环；
+							顺序：
+										#! /bin/bash
+										ls -l /home
+										echo "easadasdasd"
+										echo $0
+							分支(&& ||:符号级联；if else;):
+										test -x hehe && echo "OKK" || echo "fault"
+
+										if()
+										then
+											xxx
+										else  (elif)
+											xxx
+										fi
+										//示例
+										if [  -x $1 ]
+										then
+												echo "ok"
+										elif [ -x $2   ]; then
+												echo "$2 excutable" 
+										else
+												echo "fa"
+										fi									
+								case分支：
+										Value=$3
+										case $Value in
+										 a)
+												echo "a";;
+										 b)
+												echo "b";;
+
+										esac
+							循环(while;until;for-in)
+							while:
+										Count=1
+										while [  -x $1 ]
+										do
+												[ $Count -ge  5 ] && break
+												echo "running"
+												let Count++
+										done
+							untile:		和while相反
+							for:
+										for Var in aa bb cc dd ee
+										 do
+										        [ $Count -ge  5 ] && break
+										        echo " loop $Count"
+										echo "running.."
+										        let Count++
+										done
+										
+脚本分析					友好提示
+							输出；输入；处理；
+							1：接受输入 - 输入提示(友好)
+										- 输入检测
+							2：筛选		- 合法
+										- 满足条件
+										-技术需求	循环，取余...
+							3：输出
+							示例：
+							
+							//选数
+								  1 #!/bin/bash
+								  2 #.....................................
+								  3 #--选出10个3的倍数，从指定的自然数开始
+								  4 #.....................................
+								  5 
+								  6 #--输入
+								  7 read -p "请输入一个自然数: " Input
+								  8 if [ $Input -gt 0 ] 2>/dev/null ; then
+								  9         echo "你输入是自然数，从此自然数开始3的倍数为"
+								 10 else
+								 11         echo "你输入的不是自然数，程序退出" 
+								 12         exit
+								 13 fi
+								 14 #--处理并输出
+								 15 Count=0
+								 16 Num=$Input
+								 17 while [ $Count -lt 10 ]
+								 18 do
+								 19         let Num2=$Num%3
+								 20         if [ $Num2 -eq 0 ] ; then
+								 21                 echo "$Num"
+								 22                 let Count++
+								 23         fi
+								 24         let     Num++
+								 25 done
+								~                           
+shell脚本高级主题			表达1：函数名()  2:function 函数名()
+							参数传递  通过位置变量传递$
+								  1 #!/bin/bash
+								  2 
+								  3 hello()
+								  4 {
+								  5         echo "hello linux"
+								  6 }
+								  7 
+								  8 function nihao()
+								  9 {
+								 10         echo "$1 你好"
+								 11         echo "nihao linux"
+								 12 }
+								 13 
+								 14 hello
+								 15 nihao   里拉克斯
+
+							
+							变量的替换
+								缺省替换		${Var:-value}
+								强制替换		${Var:+value}
+								缺省赋值		${Var:=value}
+								缺值错误		${Var:？string}	如有错误就替换为string	
+								单次匹配替换	${Var/pattern/stting} 若Var变量匹配pattern存在，则单次输出为string   eg:${Var/Yes/yes} ：将Var中出现的Yes换成yes
+								全局匹配替换	${Var//pattern/stting} 若Var变量匹配pattern多次，则全部替换输出为string   eg:${Var/Yes/yes}
+猜拳游戏讲解
+							
+
+shell      结构化命令					
+						
+							
+
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+
+
+
+
+
+
+
+
+
+
+

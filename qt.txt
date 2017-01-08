@@ -1,0 +1,171 @@
+2016/11/21
+//hanhan513
+
+
+f1//帮助文档
+
+				QDebug  调试。
+				QDialog  //所有对话框窗口的基类
+
+				多窗口切换：信号与槽  //完成对象之间的协同操作
+				手动关联 connect // connect(ui->textbutton,SIGNAL(clicked(bool)),this,SLOT(firstShow());
+				自动关联 void on_textbutton_clicked();
+
+				设计器中： F4或者左上角图标 //拖动，勾选下面选框 //F3主界面 //右键生成过槽的按钮，选择，
+
+				ALT+ENTER   快速添加定义
+				ctrl+shift+R //替换
+
+				public slots:
+
+对话框：
+				颜色对话框：<QColorDialog.h>
+				文件对话框：<qfiledialog.h>
+				字体对话框：
+				...
+
+				其他窗口部件：
+				在窗口label中添加图片 #include <QPixmap> //ui->photo->setPixmap(QPixmap("G:\photo/2start.jpg"));
+				
+布局管理：		ctrl+l //垂直布局
+				ctrl+h //水平布局
+				#include <QHBoxLayout>  //显示窗口，隐藏等
+				设置伙伴  &   伙伴设计模式   快捷键ALT+&(设置的键)
+				设置TAB顺，上边第四个
+				
+应用程序主窗口：
+				
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+1：				qml,wegiht;
+				信号与槽（核心）；
+				QT creator 
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
